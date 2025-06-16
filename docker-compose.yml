@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: visa_password###
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data/
 
@@ -19,7 +19,7 @@ services:
     restart: always
     container_name: redis
     ports:
-      - "6379:6379"
+      - "6380:6379"
 
   django:
     build:
@@ -33,7 +33,7 @@ services:
     volumes: &shared_volumes
       - ./:/usr/src/app
     ports:
-      - "8000:8000"
+      - "8001:8000"
     command: python manage.py runserver 0.0.0.0:8000
 
   bot:
