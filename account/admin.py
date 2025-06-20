@@ -9,23 +9,35 @@ class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
     add_form = CustomUserCreationForm
 
-    list_display = ("phone" ,"is_staff", "is_active",)
+    list_display = ("phone", "is_staff", "is_active",)
     list_filter = ("phone", "is_staff", "is_active",)
+
+    readonly_fields = ("last_login", "date_joined", "password")
 
     fieldsets = (
         (None, {"fields": ("phone", "password")}),
-        ("Personal Info", {"fields": ("full_name","chat_id","date_of_birth",
-                                      "role","is_blocked","is_deleted")}),
-        ("Permissions", {"fields": ("is_staff", "is_active", "groups", "user_permissions")}),
+        ("Personal Info", {"fields": (
+            "full_name", "email", "chat_id", "date_of_birth",
+            "role", "balance", "is_blocked", "is_deleted"
+        )}),
+        ("Permissions", {"fields": (
+            "is_active", "is_staff", "is_superuser",
+            "groups", "user_permissions"
+        )}),
         ("Important dates", {"fields": ("last_login", "date_joined")}),
     )
 
     add_fieldsets = (
         (None, {
             "classes": ("wide",),
-            "fields": ("phone", "full_name", "password1", "password2", "is_staff", "is_active"),
+            "fields": (
+                "phone", "full_name", "email", "chat_id", "date_of_birth",
+                "role", "balance", "is_blocked", "is_staff", "is_active",
+                "password1", "password2"
+            ),
         }),
     )
 
     search_fields = ("phone", "full_name",)
     ordering = ("phone",)
+
