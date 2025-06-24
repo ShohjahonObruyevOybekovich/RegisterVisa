@@ -27,3 +27,8 @@ def phone_number_btn():
         resize_keyboard=True,
         one_time_keyboard=True
     )
+
+def user_accept(user):
+    ok = InlineKeyboardButton(text="✅ Qabul qilish", callback_data=f"ok_{user}")
+    no = InlineKeyboardButton(text="❎ Yo'q", callback_data=f"no_{user}")
+    return InlineKeyboardMarkup(inline_keyboard=[[ok], [no]])

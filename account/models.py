@@ -21,6 +21,7 @@ class CustomUser(AbstractUser):
 
     ROLE_CHOICES = (
         ("User", "User"),
+        ("Client", "Client"),
         ("Admin", "Admin"),
     )
 
